@@ -1,0 +1,11 @@
+C:\Users\iland\source\repos\WindowsFormsContacts\WindowsFormsContacts\obj\Debug\WindowsFormsContacts.csproj.AssemblyReference.cache
+C:\Users\iland\source\repos\WindowsFormsContacts\WindowsFormsContacts\obj\Debug\WindowsFormsContacts.ContactDetails.resources
+C:\Users\iland\source\repos\WindowsFormsContacts\WindowsFormsContacts\obj\Debug\WindowsFormsContacts.Form1.resources
+C:\Users\iland\source\repos\WindowsFormsContacts\WindowsFormsContacts\obj\Debug\WindowsFormsContacts.Properties.Resources.resources
+C:\Users\iland\source\repos\WindowsFormsContacts\WindowsFormsContacts\obj\Debug\WindowsFormsContacts.csproj.GenerateResource.cache
+C:\Users\iland\source\repos\WindowsFormsContacts\WindowsFormsContacts\obj\Debug\WindowsFormsContacts.csproj.CoreCompileInputs.cache
+C:\Users\iland\source\repos\WindowsFormsContacts\WindowsFormsContacts\bin\Debug\WindowsFormsContacts.exe.config
+C:\Users\iland\source\repos\WindowsFormsContacts\WindowsFormsContacts\bin\Debug\WindowsFormsContacts.exe
+C:\Users\iland\source\repos\WindowsFormsContacts\WindowsFormsContacts\bin\Debug\WindowsFormsContacts.pdb
+C:\Users\iland\source\repos\WindowsFormsContacts\WindowsFormsContacts\obj\Debug\WindowsFormsContacts.exe
+C:\Users\iland\source\repos\WindowsFormsContacts\WindowsFormsContacts\obj\Debug\WindowsFormsContacts.pdb
