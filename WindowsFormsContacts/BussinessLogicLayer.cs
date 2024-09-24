@@ -24,9 +24,9 @@ namespace WindowsFormsContacts
 
             return contact;
         }
-        public List<Contact> GetAllContacts()
+        public List<Contact> GetAllContacts(string searchText = null)
         {
-            return _dataAccesslayer.GetContacts();
+            return _dataAccesslayer.GetContacts(searchText);
         }
 
         public void DeleteContact(int id)

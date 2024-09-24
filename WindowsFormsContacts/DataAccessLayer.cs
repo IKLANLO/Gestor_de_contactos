@@ -128,7 +128,7 @@ namespace WindowsFormsContacts
             }
         }
 
-        public List<Contact> GetContacts()
+        public List<Contact> GetContacts(string searchText = null)
         {
             List<Contact> list = new List<Contact>();
             try
@@ -139,7 +139,21 @@ namespace WindowsFormsContacts
                 string query = "SELECT * FROM Contacts;";
 
                 //definimos el comando sql a ejecutar
-                SqlCommand command = new SqlCommand(query, _connection);
+                SqlCommand command = new SqlCommand();
+
+                if(!string.IsNullOrEmpty(searchText))
+                {
+                    query = @"  SELECT * FROM Contacts 
+                                WHERE FirstName LIKE @Search OR LastName LIKE @Search
+                                OR Phone LIKE @Search OR Address LIKE @Search;";
+
+                    //lo que haya entre los % se ignora
+                    command.Parameters.Add(new SqlParameter("@Search", $"%{searchText}%"));
+                }
+
+                //ahora añadimos al comando la conexión y la query
+                command.CommandText = query;
+                command.Connection = _connection;
 
                 //definimos el objeto lector que contendrá todas las filas
                 SqlDataReader reader = command.ExecuteReader();
