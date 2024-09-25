@@ -30,64 +30,6 @@ namespace WindowsFormsContacts
             ContactDetailsDialog();
         }
 
-        #endregion
-
-
-        #region PRIVATE METHODS
-
-        private void ContactDetailsDialog()
-        {
-            ContactDetails contactDetails = new ContactDetails();
-            contactDetails.ShowDialog(this);
-        }
-
-        #endregion
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //ResizeCells();
-            PopulateContacts();
-        }
-
-        private void ResizeCells()
-        {
-            int anchoTotal = 0;
-            int altoTotal = 470;
-
-            //se ajusta el ancho de cada columna al contenido
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView1.AutoSize = true;
-
-            //se ajusta el ancho de la ventana al datagrid
-            foreach (DataGridViewColumn columna in dataGridView1.Columns)
-            {
-                if (columna.Visible)
-                {
-                    anchoTotal += columna.Width;
-
-                }
-            }
-
-            if (dataGridView1.RowHeadersVisible)
-            {
-                anchoTotal += dataGridView1.RowHeadersWidth;
-            }
-
-            // Ajustar el ancho del DataGridView
-            dataGridView1.Width = anchoTotal;
-
-            this.ClientSize = new Size(dataGridView1.DisplayRectangle.Width, altoTotal);
-        }
-        //el argumento es opcional cuando se asigna null
-        public void PopulateContacts(string searchText = null)
-        {
-
-            //obtenemos los datos
-            List<Contact> contacts = _bussinessLogicLayer.GetAllContacts(searchText);
-            // indicamos al dataGrid el origen de datos
-            dataGridView1.DataSource = contacts;
-        }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //capturamos la celda pinchada, y aseguramos que sea de tipo link
@@ -115,7 +57,51 @@ namespace WindowsFormsContacts
                 }
             }
         }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            PopulateContacts(txtSearch.Text);
+            txtSearch.Clear();
+        }
 
+        #endregion
+
+
+        #region PRIVATE METHODS
+
+        private void ContactDetailsDialog()
+        {
+            ContactDetails contactDetails = new ContactDetails();
+            contactDetails.ShowDialog(this);
+        }
+
+        private void ResizeCells()
+        {
+            int anchoTotal = 0;
+            int altoTotal = 470;
+
+            //se ajusta el ancho de cada columna al contenido
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AutoSize = true;
+
+            //se ajusta el ancho de la ventana al datagrid
+            foreach (DataGridViewColumn columna in dataGridView1.Columns)
+            {
+                if (columna.Visible)
+                {
+                    anchoTotal += columna.Width;
+                }
+            }
+
+            if (dataGridView1.RowHeadersVisible)
+            {
+                anchoTotal += dataGridView1.RowHeadersWidth;
+            }
+
+            // Ajustar el ancho del DataGridView
+            dataGridView1.Width = anchoTotal;
+
+            this.ClientSize = new Size(dataGridView1.DisplayRectangle.Width, altoTotal);
+        }
         private void DeleteContact(int id)
         {
             _bussinessLogicLayer.DeleteContact(id);
@@ -123,11 +109,22 @@ namespace WindowsFormsContacts
             MessageBox.Show("Data deleted successfully", "Info");
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            PopulateContacts(txtSearch.Text);
-            txtSearch.Clear();
-        }
-    }
+        #endregion
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //ResizeCells();
+            PopulateContacts();
+        }
+
+        //el argumento es opcional cuando se asigna null
+        public void PopulateContacts(string searchText = null)
+        {
+            //obtenemos los datos
+            List<Contact> contacts = _bussinessLogicLayer.GetAllContacts(searchText);
+
+            // indicamos al dataGrid el origen de datos
+            dataGridView1.DataSource = contacts;
+        }   
+    }
 }
